@@ -1497,7 +1497,7 @@ for (let anju of Sparkyaudio){
     
 	
 	
-	 if (smallinput=='alive') {
+	 if (smallinput=='.alive') {
         reply ('Yes I am Alive 🫂')
     }
 	
@@ -5485,7 +5485,7 @@ const helpmenu = `Hello *${pushname}* Dear...!! ,
 
 ╭═══〘 *Main* 〙═══⊷❍
 ┃✰╭──────────────
-┃✰│▸ speak
+┃✰│▸ tts
 ┃✰│▸ alive
 ┃✰│▸ stalk
 ┃✰│▸ profile
@@ -5857,19 +5857,19 @@ case 'weather':
         break
 		
 
- case "tts":  case "texttospeech":  case "say": case "speak":{
+ case "tts":  case "texttospeech":  case "say": case "tts":{
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
 
-    if (!args[0]) return reply("Please give me a text so that i can speak it!")
+    if (!args[0]) return reply("Please give me a text so that i can Say it!")
       
       let texttosay = text
         ? text
         : m.quoted && m.quoted.text
         ? m.quoted.text
         : m.text;
-      const SpeakEngine = require("google-tts-api"); 
-      const texttospeechurl = SpeakEngine.getAudioUrl(texttosay, {lang: "en", slow: false, host: "https://translate.google.com",});
+      const ttsEngine = require("google-tts-api"); 
+      const texttospeechurl = ttsEngine.getAudioUrl(texttosay, {lang: "ml", slow: false, host: "https://translate.google.com",});
       SPARKY.sendMessage(m.chat,{audio: {url: texttospeechurl,},mimetype: "audio/mpeg",fileName: `SPARKYSpeechEngine.mp3`,},{quoted: m,});
     }
     break;
