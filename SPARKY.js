@@ -2055,7 +2055,7 @@ Type *surrender* to surrender and admit defeat`
     break		
 		
 		//Hosted platfrom info
-		   case 'statusbot': case 'server':{
+		   case 'server': case 'speed':{
                 const used = process.memoryUsage()
                 const cpus = os.cpus().map(cpu => {
                     cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
@@ -5458,13 +5458,13 @@ case 'help': case 'h': case 'menu': case 'allmenu': case 'listmenu':{
 const helpmenu = `Hello *${pushname}* Dear...!! ,
 
 
- I am *𝘚𝘗𝘈𝘙𝘒𝘠 𝘉𝘖𝘛*, A Bot Developed by *𝘈𝘚𝘞𝘐𝘕 𝘚𝘗𝘈𝘙𝘒𝘠*.
+ I am *${global.BotName}*, A Bot Developed by *𝘈𝘚𝘞𝘐𝘕 𝘚𝘗𝘈𝘙𝘒𝘠*.
 
 
-╭═══〘 𝘚𝘗𝘈𝘙𝘒𝘠 𝘉𝘖𝘛 〙═══⊷❍
+╭═══〘 ${global.BotName} 〙═══⊷❍
 ┃✰╭──────────────
 ┃✰│
-┃✰│ 𝘖𝘸𝘯𝘦𝘳 : 𝘈𝘴𝘸𝘪𝘯 𝘚𝘱𝘢𝘳𝘬𝘺
+┃✰│ 𝘖𝘸𝘯𝘦𝘳 : ${global.OwnerName}
 ┃✰│ 𝘜𝘴𝘦𝘳 :  ${pushname}
 ┃✰│ 𝘗𝘳𝘦𝘧𝘪𝘹 :  ${prefix}
 ┃✰│ 𝘚𝘦𝘳𝘷𝘦𝘳 : 𝘚𝘱𝘢𝘳𝘬𝘺 +
@@ -5472,7 +5472,7 @@ const helpmenu = `Hello *${pushname}* Dear...!! ,
 ┃✰│ 𝘉𝘰𝘵 𝘚𝘱𝘦𝘦𝘥 : ${latensie.toFixed(4)} ms
 ┃✰│ 𝘙𝘶𝘯 𝘛𝘪𝘮𝘦 :  ${runtime(process.uptime())}
 ┃✰│ 𝘝𝘦𝘳𝘴𝘪𝘰𝘯: 𝘷 1.0.0
-┃✰│ 𝘖𝘸𝘯𝘦𝘳 𝘕𝘶𝘮𝘣𝘦𝘳 : "+917012984396"
+┃✰│ 𝘋𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳 𝘕𝘶𝘮𝘣𝘦𝘳 : +917012984396
 ┃✰│
 ┃✰│
 ┃✰│  ▎▍▌▌▉▏▎▌▉▐▏▌▎
