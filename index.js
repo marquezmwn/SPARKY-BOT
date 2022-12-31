@@ -251,7 +251,7 @@ I hope you will come back soon, but You will be missed!
         return status
     }
 	
-    SPARKY.public = false
+    SPARKY.public = true
 
     SPARKY.serializeM = (m) => smsg(SPARKY, m, store)
 
