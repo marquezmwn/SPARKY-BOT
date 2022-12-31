@@ -3538,7 +3538,6 @@ case 'public': {
  if (!isCreator) return reply(mess.owner)
  SPARKY.public = true
  reply('I am now Publicly accessable!')
- SPARKY.setStatus(`Mode : Public`)
  }
  break
  
@@ -3548,7 +3547,6 @@ case 'public': {
  if (!isCreator) return reply(mess.botowner)
  SPARKY.public = false
  reply('Only Owner can use me now!')
- SPARKY.setStatus(`Mode : Private`)
  }
  break
 
@@ -3585,15 +3583,15 @@ case 'tomp4': case 'tovideo': {
  }
  break
 
-case 'toaud': case 'toaudio': {
+case 'toaud': case 'mp3': {
     if (isBan) return reply(mess.banned)	 			
  if (isBanChat) return reply(mess.bangc)
  if (!/video/.test(mime) && !/audio/.test(mime)) return reply(`Send/Reply Video/Audio You Want To Use As Audio With Caption ${prefix + command}`)
  if (!m.quoted) return reply(`Send/Reply Video/Audio You Want To Use As Audio With Caption ${prefix + command}`)
  reply(mess.waiting)
  let media = await quoted.download()
- let { toAudio } = require('./lib/converter')
- let audio = await toAudio(media, 'mp4')
+ let { mp3 } = require('./lib/converter')
+ let audio = await mp3(media, 'mp4')
  SPARKY.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg'}, { quoted : m })
  }
 break
@@ -5590,7 +5588,7 @@ const helpmenu = `Hello *${pushname}* Dear...!! ,
 ┃✰│▸ emojimix
 ┃✰│▸ tourl
 ┃✰│▸ tomp3
-┃✰│▸ toaudio
+┃✰│▸ mp3
 ┃✰╰───────────────
 ╰═════════════════⊷
 
