@@ -2499,14 +2499,10 @@ case 'listonline': case 'here':{
       case "setbotpp":
         {
           if (!isCreator) return replay(mess.botowner);
-          if (!quoted)
-            return replay(`Send/Reply Image With Caption ${prefix}setbotpp`);
-          if (!/image/.test(mime))
-          return replay(`Send/Reply Image With Caption ${prefix}setbotpp`);
-          if (/webp/.test(mime))
-          return replay(`Send/Reply Image With Caption ${prefix}setbotpp`);
-          let media = await SPARKY.downloadAndSaveMediaMessage(quoted);
-          await SPARKY.updateProfilePicture(botNumber, {
+          if (!message.reply_message || !message.reply_message.image) return await SPARKY.send('_Reply to a image._')
+	const media = await SPARKY.reply_message.downloadAndSaveMedia()
+	await SPARKY.updateProfilePicture(message.user_id, media)
+	await SPARKY.send('_Successfully Profile Picture Updated_'), {
             url: media,
           }).catch((err) => fs.unlinkSync(media));
           replay(`*✨ ${pushname}...!! My Profile Pic Updated ✨*`);
