@@ -2495,18 +2495,17 @@ case 'listonline': case 'here':{
 			
 		
 		
-	case "pp": case "setdp":
-      case "setbotpp":
-        {
-          if (!isCreator) return replay(mess.botowner);
-          if (!message.reply_message || !message.reply_message.image) return await SPARKY.send('_Reply to a image._')
-	const media = await SPARKY.reply_message.downloadAndSaveMedia()
-	await SPARKY.updateProfilePicture(message.user_id, media)
-	await SPARKY.send('_Successfully Profile Picture Updated_'), {
-            url: media,
-          }).catch((err) => fs.unlinkSync(media));
-          replay(`*✨ ${pushname}...!! My Profile Pic Updated ✨*`);
-        }
+	Function({
+	case: 'setdp',
+	fromMe: true,
+	desc: 'set profile picture in any resolution',
+	type: 'user'
+}, async (message, match) => {
+	if (!message.reply_message || !message.reply_message.image) return await message.send('_Reply to a image._')
+	const media = await message.reply_message.downloadAndSaveMedia()
+	await message.updateProfilePicture(message.user_id, media)
+	await message.send('_Successfully Profile Picture Updated_')
+})
          break;
 		
 		
