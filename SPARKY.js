@@ -2495,12 +2495,20 @@ case 'listonline': case 'here':{
 			
 		
 		
-	case: '.setdp': {
-	if (!SPARKY.reply_message || !SPARKY.reply_message.image) return await SPARKY.send('_Reply to a image._')
-	const media = await SPARKY.reply_message.downloadAndSaveMedia()
-	await SPARKY.updateProfilePicture(SPARKY.user_id, media)
-	await SPARKY.send('_Successfully Profile Picture Updated_')
-}
+	case "pp": case "setdp":
+      case "setbotpp":
+        {
+          if (!isCreator) return replay(mess.botowner);
+          if (!quoted)
+            return replay(`Send/Reply Image With Caption ${prefix}setbotpp`);
+          return replay(`Send/Reply Image With Caption ${prefix}setbotpp`);
+          return replay(`Send/Reply Image With Caption ${prefix}setbotpp`);
+          let media = await SPARKY.downloadAndSaveMediaMessage(quoted);
+          await SPARKY.updateProfilePicture(botNumber, {
+            url: media,
+          }).catch((err) => fs.unlinkSync(media));
+          replay(`*✨ ${pushname}...!! My Profile Pic Updated ✨*`);
+        }
          break;
 		
 		
@@ -3580,8 +3588,8 @@ case 'toaud': case 'mp3': {
  if (!m.quoted) return reply(`Send/Reply Video/Audio You Want To Use As Audio With Caption ${prefix + command}`)
  reply(mess.waiting)
  let media = await quoted.download()
- let { mp3 } = require('./lib/converter')
- let audio = await mp3(media, 'mp4')
+ let { toAudio } = require('./lib/converter')
+ let audio = await toAudio(media, 'mp4')
  SPARKY.sendMessage(m.chat, {audio: audio, mimetype: 'audio/mpeg'}, { quoted : m })
  }
 break
@@ -5868,7 +5876,7 @@ case 'weather':
         if (isBanChat) return reply(mess.bangc)
         if (!m.isGroup) return replay(mess.grouponly)
     reply(`Running repl....Please wait until repl.it responds...`)						
-    var replqr =  await getBuffer(`https://miku-qr--fantox001.repl.co/`)
+    var replqr =  await getBuffer(`https://replit.com/@Sparkymon777/SPARKY-BOT-Ultra?v=output%20only=1&lite=1#index.js`)
                                var qrbutton = [
             {buttonId: `.qr`, buttonText: {displayText: `Re-run Repl`}, type: 1}
             ]
