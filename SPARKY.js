@@ -2501,7 +2501,9 @@ case 'listonline': case 'here':{
           if (!isCreator) return replay(mess.botowner);
           if (!quoted)
             return replay(`Send/Reply Image With Caption ${prefix}setbotpp`);
+          if (!/image/.test(mime))
           return replay(`Send/Reply Image With Caption ${prefix}setbotpp`);
+          if (/webp/.test(mime))
           return replay(`Send/Reply Image With Caption ${prefix}setbotpp`);
           let media = await SPARKY.downloadAndSaveMediaMessage(quoted);
           await SPARKY.updateProfilePicture(botNumber, {
